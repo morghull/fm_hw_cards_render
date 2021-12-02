@@ -1,0 +1,26 @@
+/*
+$sm:566px;
+$md:768px;
+$lg:992px;
+*/
+:root {
+  --clr-bg-prime: #ff676c;
+  --clr-bg-second: #f2f2f2;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+*{
+  box-sizing: border-box;
+}
+.taskWrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  background: linear-gradient(
+    360deg,
+    var(--clr-bg-prime) 0%,
+    var(--clr-bg-prime) 50%,
+    var(--clr-bg-second) 50%,
+    var(--clr-bg-second) 100%
+  );
+}

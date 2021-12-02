@@ -1,0 +1,45 @@
+:root {
+  --clr-card-text-prime: #777777;
+  --clr-card-prime: #ffffff;
+  --clr-card-second: #ff676c;
+  --clr-card-box-shadow: #aaaaaa;
+}
+.card {
+  --photo-size: 7rem;
+  /* width: 15rem; */
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: var(--clr-card-prime);
+  box-shadow: 0 0 0.25rem var(--clr-card-box-shadow);
+  border-radius: .3rem;
+}
+.cardPhotoWrapper {
+  position: relative;
+  width: var(--photo-size);
+  height: var(--photo-size);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0.25rem solid var(--clr-card-second);
+}
+.cardPhoto {
+  width: calc(var(--photo-size) - 0.5rem);
+  height: calc(var(--photo-size) - 0.5rem);
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  border: 0.125rem solid var(--clr-card-prime);
+}
+.cardName {
+  margin-top: 1rem;
+  color: var(--clr-card-text-prime);
+  text-transform: capitalize;
+  font-weight: 600;
+}
+@media screen and (max-width: 610px) {
+  /* .card + .card {
+        margin-left: initial;
+      } */
+}

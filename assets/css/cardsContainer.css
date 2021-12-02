@@ -1,0 +1,31 @@
+:root {
+  --clr-card-wrap-text-prime: #ff676c;
+  --clr-card-wrap-selected-area-bg: #ffffff;
+}
+.cardsWrapper {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.cardsHeading {
+  margin-top: 3rem;
+  color: var(--clr-card-wrap-text-prime);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cardsContainer {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  /* background-color: green; */
+  margin-bottom: 7rem;
+}
+.selectedCardsWrapper {
+  width: 80%;
+  min-height: 5rem;
+  position: fixed;
+  bottom: 1rem;
+  background-color: var(--clr-card-wrap-selected-area-bg);
+}
