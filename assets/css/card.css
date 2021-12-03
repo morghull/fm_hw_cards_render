@@ -3,17 +3,25 @@
   --clr-card-prime: #ffffff;
   --clr-card-second: #ff676c;
   --clr-card-box-shadow: #aaaaaa;
+  --clr-card-selected: #c40abb;
 }
 .card {
   --photo-size: 7rem;
-  /* width: 15rem; */
+  width: 11rem;
   padding: 1rem;
   margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
   background-color: var(--clr-card-prime);
   box-shadow: 0 0 0.25rem var(--clr-card-box-shadow);
-  border-radius: .3rem;
+  border-radius: 0.3rem;
+  border: 0.2rem solid transparent;
+}
+.card:hover {
+  box-shadow: 0 0 0.5rem var(--clr-card-selected);
+}
+.card,.cardPhotoWrapper,.cardPhoto,.initials,.cardName {
+  cursor: pointer;
 }
 .cardPhotoWrapper {
   position: relative;
@@ -32,11 +40,70 @@
   border-radius: 50%;
   border: 0.125rem solid var(--clr-card-prime);
 }
+.initials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--photo-size) - 0.5rem);
+  height: calc(var(--photo-size) - 0.5rem);
+  font-size: 3rem;
+  color: var(--clr-card-prime);
+}
+.hidden {
+  display: none;
+}
 .cardName {
+  max-width: 10rem;
+  min-height: 1rem;
   margin-top: 1rem;
   color: var(--clr-card-text-prime);
   text-transform: capitalize;
   font-weight: 600;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cardContacts {
+  margin-top: 1rem;
+}
+.contactWrapper {
+  --card-contact-size: 2rem;
+  display: inline-block;
+  background-color: var(--clr-card-second);
+  border-radius: 50%;
+  width: var(--card-contact-size);
+  height: var(--card-contact-size);
+}
+.contactWrapper:hover {
+  background-color: var(--clr-card-prime);
+}
+.contactWrapper:hover .contact {
+  filter: initial;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+}
+.contactWrapper + .contactWrapper {
+  margin-left: 0.25rem;
+}
+.contact {
+  display: inline-block;
+  width: var(--card-contact-size);
+  height: var(--card-contact-size);
+  border-radius: 50%;
+  filter: invert(100%);
+}
+.facebook {
+  background: url('../images/facebook.svg') no-repeat center;
+}
+.twitter {
+  background: url('../images/twitter.svg') no-repeat center;
+}
+.instagram {
+  background: url('../images/instagram.svg') no-repeat center;
+}
+.selected {
+  border-color: var(--clr-card-selected);
 }
 @media screen and (max-width: 610px) {
   /* .card + .card {

@@ -9,13 +9,22 @@ $lg:992px;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
 }
-*{
+* {
   box-sizing: border-box;
 }
 .taskWrapper {
   display: flex;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
+}
+.bg {
+  width: 100%;
+  min-height: 100vh;
+  position:fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   background: linear-gradient(
     360deg,
     var(--clr-bg-prime) 0%,
@@ -23,4 +32,5 @@ $lg:992px;
     var(--clr-bg-second) 50%,
     var(--clr-bg-second) 100%
   );
+  z-index: -1;
 }
