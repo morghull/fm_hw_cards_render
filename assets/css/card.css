@@ -49,9 +49,6 @@
   font-size: 3rem;
   color: var(--clr-card-prime);
 }
-.hidden {
-  display: none;
-}
 .cardName {
   max-width: 10rem;
   min-height: 1rem;

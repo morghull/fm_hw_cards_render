@@ -37,7 +37,11 @@ const createCard = ({ id, firstName, lastName, profilePicture, contacts }) => {
     'article',
     {
       classNames: ['card'],
-      attributes: { id: `card${id}`, ['data-id']: id },
+      attributes: {
+        id: `card${id}`,
+        ['data-id']: id,
+        ['data-name']: `${firstName} ${lastName}`,
+      },
       events: {
         click: handleCardClick,
       },
