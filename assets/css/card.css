@@ -102,6 +102,9 @@
 .selected {
   border-color: var(--clr-card-selected);
 }
+.hidden {
+  display: none;
+}
 @media screen and (max-width: 610px) {
   /* .card + .card {
         margin-left: initial;
