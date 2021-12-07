@@ -7,18 +7,18 @@ function handleImageError({ target }) {
 function handleImageLoad({
   target,
   target: {
-    dataset: { id },
+    dataset: { id, photowrapperid, initialsid },
   },
 }) {
-  document.getElementById(`cardPhotoWrapper${id}`).append(target);
-  document.getElementById(`initials${id}`).classList.add('hidden');
+  document.getElementById(photowrapperid).append(target);
+  document.getElementById(initialsid).classList.add('hidden');
 }
 
 function handleCardClick({
   target,
   target: {
-    dataset: { id, containerid },
-  }
+    dataset: { id },
+  },
 }) {
   const card = document.getElementById(`card${id}`);
   const isSelected = card.getAttribute('selected');
@@ -31,23 +31,23 @@ function handleCardClick({
   }
 }
 
-const createCard = (
-  { id, firstName, lastName, profilePicture, contacts },
-  idSelectedCardsContainer
-) => {
+const createCard = ({ id, firstName, lastName, profilePicture, contacts }) => {
   const initials = getInitials(firstName, lastName);
+  const cardId = `card${id}`;
+  const cardPhotoWrapperId = `cardPhotoWrapper${id}`;
+  const cardInitialsId = `initials${id}`;
   const attributesForSelection = {
     ['data-id']: id,
+    ['data-cardid']: cardId,
   };
   return createElement(
     'article',
     {
       classNames: ['card'],
       attributes: {
-        id: `card${id}`,
-        ['data-id']: id,
+        id: cardId,
         ['data-name']: `${firstName} ${lastName}`,
-        ['data-containerid']: idSelectedCardsContainer,
+        ...attributesForSelection,
       },
       events: {
         click: handleCardClick,
@@ -57,7 +57,7 @@ const createCard = (
       'div',
       {
         classNames: ['cardPhotoWrapper'],
-        attributes: { id: `cardPhotoWrapper${id}`, ...attributesForSelection },
+        attributes: { id: cardPhotoWrapperId, ...attributesForSelection },
         events: {
           click: handleCardClick,
         },
@@ -67,6 +67,8 @@ const createCard = (
         attributes: {
           src: profilePicture,
           alt: initials,
+          ['data-photowrapperid']: cardPhotoWrapperId,
+          ['data-initialsid']: cardInitialsId,
           ...attributesForSelection,
         },
         events: {
@@ -80,7 +82,7 @@ const createCard = (
         {
           classNames: ['initials'],
           attributes: {
-            id: `initials${id}`,
+            id: cardInitialsId,
             style: `background-color: ${stringToColour(initials)}`,
             ...attributesForSelection,
           },
@@ -98,7 +100,10 @@ const createCard = (
     ),
     createElement(
       'ul',
-      { classNames: ['cardContacts'] },
+      {
+        classNames: ['cardContacts'],
+        attributes: { ...attributesForSelection },
+      },
       ...contacts.map((contact) => {
         return createElement(
           'li',
