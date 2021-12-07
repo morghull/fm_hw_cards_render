@@ -31,9 +31,12 @@ function handleCardClick({
   }
 }
 
-const createCard = ({ id, firstName, lastName, profilePicture, contacts }) => {
+const createCard = (
+  { id, firstName, lastName, profilePicture, contacts },
+  cardIdPrefix
+) => {
   const initials = getInitials(firstName, lastName);
-  const cardId = `card${id}`;
+  const cardId = `${cardIdPrefix}${id}`;
   const cardPhotoWrapperId = `cardPhotoWrapper${id}`;
   const cardInitialsId = `initials${id}`;
   const attributesForSelection = {

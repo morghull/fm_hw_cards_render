@@ -17,6 +17,13 @@ $lg:992px;
   width: 100%;
   min-height: 100vh;
 }
+.selectedCardsWrapper{
+  padding: .1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .bg {
   width: 100%;
   min-height: 100vh;

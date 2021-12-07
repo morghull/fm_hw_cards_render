@@ -1,0 +1,20 @@
+:root {
+  --clr-actor-bar-bg: #c40abb;
+  --clr-actor-font: #ffffff;
+}
+.barWrapper {
+    margin: .2rem;
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  background-color: var(--clr-actor-bar-bg);
+  color: var(--clr-actor-font);
+}
+.barName {
+}
+.barCloseButton {
+  margin-left: 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}

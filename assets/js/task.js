@@ -2,9 +2,8 @@
 
 const container = document.getElementById('cardsContainer');
 const idSelectedCardsContainer = 'selectedCardsWrapper';
-const selectedActorManager = cteateSelectedActorManager(
-  idSelectedCardsContainer
-);
+const selectedActorManager = cteateSelectedActorManager('selectedCardsWrapper');
+const cardIdPrefix = 'card';
 
 const handlerCardClick = ({
   target: {
@@ -15,12 +14,10 @@ const handlerCardClick = ({
   const card = document.getElementById(cardid);
   const { id, name } = card.dataset;
   const selected = card.getAttribute('selected');
-  console.log(id, name, selected);
   if (selected && !selectedActorManager.has(id))
     selectedActorManager.add(id, name);
   else if (!selected && selectedActorManager.has(id))
     selectedActorManager.delete(id);
-  console.log(selectedActorManager.getSelectedActors());
 };
 
 const getActorsCards = () => {
@@ -28,7 +25,7 @@ const getActorsCards = () => {
     .then((response) => response.json())
     .then((actors) =>
       actors.map((actor) => {
-        const card = createCard(actor);
+        const card = createCard(actor, cardIdPrefix);
         card.addEventListener('click', handlerCardClick);
         container.append(card);
       })
