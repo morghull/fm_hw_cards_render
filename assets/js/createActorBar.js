@@ -3,7 +3,7 @@ const createActorBar = (id, name, barIdPrefix) => {
   barIdPrefix = !barIdPrefix ? 'bar' : barIdPrefix;
   const barId = `${barIdPrefix}${id}`;
   const attributesForSelection = {
-    ['data-barid']: id,
+    ['data-id']: id,
   };
   return createElement(
     'div',

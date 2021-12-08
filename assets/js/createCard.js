@@ -7,33 +7,16 @@ function handleImageError({ target }) {
 function handleImageLoad({
   target,
   target: {
-    dataset: { id, photowrapperid, initialsid },
+    dataset: { photowrapperid, initialsid },
   },
 }) {
   document.getElementById(photowrapperid).append(target);
   document.getElementById(initialsid).classList.add('hidden');
 }
 
-function handleCardClick({
-  target,
-  target: {
-    dataset: { id },
-  },
-}) {
-  const card = document.getElementById(`card${id}`);
-  const isSelected = card.getAttribute('selected');
-  if (isSelected) {
-    card.removeAttribute('selected');
-    card.classList.remove('selected');
-  } else {
-    card.setAttribute('selected', 'true');
-    card.classList.add('selected');
-  }
-}
-
 const createCard = (
   { id, firstName, lastName, profilePicture, contacts },
-  cardIdPrefix
+  { cardIdPrefix, handlerCardSelection }
 ) => {
   const initials = getInitials(firstName, lastName);
   const cardId = `${cardIdPrefix}${id}`;
@@ -53,7 +36,13 @@ const createCard = (
         ...attributesForSelection,
       },
       events: {
-        click: handleCardClick,
+        click: ({
+          target: {
+            dataset: { id },
+          },
+        }) => {
+          handlerCardSelection(id);
+        },
       },
     },
     createElement(
@@ -62,7 +51,13 @@ const createCard = (
         classNames: ['cardPhotoWrapper'],
         attributes: { id: cardPhotoWrapperId, ...attributesForSelection },
         events: {
-          click: handleCardClick,
+          click: ({
+            target: {
+              dataset: { id },
+            },
+          }) => {
+            handlerCardSelection(id);
+          },
         },
       },
       createElement('img', {
@@ -77,7 +72,13 @@ const createCard = (
         events: {
           error: handleImageError,
           load: handleImageLoad,
-          click: handleCardClick,
+          click: ({
+            target: {
+              dataset: { id },
+            },
+          }) => {
+            handlerCardSelection(id);
+          },
         },
       }),
       createElement(
@@ -90,7 +91,13 @@ const createCard = (
             ...attributesForSelection,
           },
           events: {
-            click: handleCardClick,
+            click: ({
+              target: {
+                dataset: { id },
+              },
+            }) => {
+              handlerCardSelection(id);
+            },
           },
         },
         initials

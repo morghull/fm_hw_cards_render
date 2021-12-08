@@ -1,15 +1,9 @@
 'use strict';
 
-const cteateSelectedActorManager = (contanerId) => {
+const cteateSelectedActorManager = (contanerId, handlerCardSelection) => {
   const selectedActors = new Map();
   const container = document.getElementById(contanerId);
   const barIdPrefix = 'bar';
-
-  const handlerDelete = (id) => {
-    if (!id) return;
-    selectedActors.delete(id);
-    document.getElementById(`${barIdPrefix}${id}`).remove();
-  };
 
   return {
     add: (id, name) => {
@@ -20,12 +14,16 @@ const cteateSelectedActorManager = (contanerId) => {
         'click',
         ({
           target: {
-            dataset: { barid },
+            dataset: { id },
           },
-        }) => (handlerDelete(barid))
+        }) => handlerCardSelection(id)
       );
     },
-    delete: (id) => handlerDelete(id),
+    delete: (id) => {
+      if (!id) return;
+      selectedActors.delete(id);
+      document.getElementById(`${barIdPrefix}${id}`).remove();
+    },
     has: (id) => selectedActors.has(id),
     reset: () => {},
     getSelectedActors: () => selectedActors,
