@@ -1,4 +1,4 @@
-const createActorBar = (id, name, barIdPrefix) => {
+const createBar = ({ id, name, barIdPrefix }) => {
   if (!id) return;
   barIdPrefix = !barIdPrefix ? 'bar' : barIdPrefix;
   const barId = `${barIdPrefix}${id}`;
