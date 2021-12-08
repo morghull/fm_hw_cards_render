@@ -16,7 +16,7 @@ function handleImageLoad({
 
 const createCard = (
   { id, firstName, lastName, profilePicture, contacts },
-  { cardIdPrefix, handlerCardSelection }
+  { cardIdPrefix}
 ) => {
   const initials = getInitials(firstName, lastName);
   const cardId = `${cardIdPrefix}${id}`;
@@ -34,30 +34,12 @@ const createCard = (
         ['data-name']: `${firstName} ${lastName}`,
         ...attributesForSelection,
       },
-      events: {
-        click: ({
-          target: {
-            dataset: { id },
-          },
-        }) => {
-          handlerCardSelection(id);
-        },
-      },
     },
     createElement(
       'div',
       {
         classNames: ['cardPhotoWrapper'],
         attributes: { id: cardPhotoWrapperId, ...attributesForSelection },
-        events: {
-          click: ({
-            target: {
-              dataset: { id },
-            },
-          }) => {
-            handlerCardSelection(id);
-          },
-        },
       },
       createElement('img', {
         classNames: ['cardPhoto'],
@@ -71,13 +53,6 @@ const createCard = (
         events: {
           error: handleImageError,
           load: handleImageLoad,
-          click: ({
-            target: {
-              dataset: { id },
-            },
-          }) => {
-            handlerCardSelection(id);
-          },
         },
       }),
       createElement(
@@ -88,15 +63,6 @@ const createCard = (
             id: cardInitialsId,
             style: `background-color: ${stringToColour(initials)}`,
             ...attributesForSelection,
-          },
-          events: {
-            click: ({
-              target: {
-                dataset: { id },
-              },
-            }) => {
-              handlerCardSelection(id);
-            },
           },
         },
         initials

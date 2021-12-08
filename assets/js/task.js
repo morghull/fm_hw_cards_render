@@ -33,8 +33,16 @@ const getActorsCards = () => {
     .then((response) => response.json())
     .then((actors) =>
       actors.map((actor) => {
-        const pops = { cardIdPrefix, handlerCardSelection };
-        const card = createCard(actor, pops);
+        const props = { cardIdPrefix };
+        const card = createCard(actor, props);
+        card.addEventListener(
+          'click',
+          ({
+            target: {
+              dataset: { id },
+            },
+          }) => handlerCardSelection(id)
+        );
         container.append(card);
       })
     );
