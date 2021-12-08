@@ -2,7 +2,6 @@
 
 const container = document.getElementById('cardsContainer');
 const idSelectedCardsContainer = 'selectedCardsWrapper';
-//const selectedActorManager = cteateSelectedActorManager('selectedCardsWrapper');
 const cardIdPrefix = 'card';
 
 const handlerCardSelection = (id) => {
@@ -25,7 +24,7 @@ const handlerCardSelection = (id) => {
 };
 
 const selectedActorManager = cteateSelectedActorManager(
-  'selectedCardsWrapper',
+  idSelectedCardsContainer,
   handlerCardSelection
 );
 

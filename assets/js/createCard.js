@@ -24,7 +24,6 @@ const createCard = (
   const cardInitialsId = `initials${id}`;
   const attributesForSelection = {
     ['data-id']: id,
-    ['data-cardid']: cardId,
   };
   return createElement(
     'article',
