@@ -1,0 +1,14 @@
+.error {
+  padding: 1rem 1.5rem;
+  background-color: var(--clr-bg-prime);
+  border: 0.1rem solid var(--clr-bg-second);
+  box-shadow: 0 0 0.5rem var(--clr-box-shadow);
+  color: var(--clr-bg-second);
+}
+.errorTitle {
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+}
+.errorDetails {
+  font-size: 0.9rem;
+}

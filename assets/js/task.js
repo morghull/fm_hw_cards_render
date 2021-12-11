@@ -11,8 +11,9 @@ const getActorsCards = () => {
       const props = { actors, cardsContainerId, barsContainerId };
       selectedActorManager = cteateSelectedActorManager(props);
     })
-    .then(() => {
-
+    .catch((err) => {
+      const props = { err, errorContainerId: cardsContainerId };
+      createError(props);
     });
 };
 getActorsCards();
